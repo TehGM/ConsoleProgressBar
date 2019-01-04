@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>TehGM</Authors>
+    <Description>A flexible and ready to use library for a progress bar for terminal applications</Description>
+    <Copyright>Copyright (c) 2019 TehGM</Copyright>
+    <PackageLicenseUrl>https://github.com/TehGM/ConsoleProgressBar/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/TehGM/ConsoleProgressBar</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/TehGM/ConsoleProgressBar.git</RepositoryUrl>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
 </Project>
