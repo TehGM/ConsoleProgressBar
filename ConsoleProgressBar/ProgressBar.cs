@@ -36,7 +36,7 @@ namespace TehGM.ConsoleProgressBar
         }
         /// <summary>Character used for filled segments.</summary>
         /// <remarks>Default is '#'.</remarks>
-        public char CharFll { get; set; } = '#';
+        public char CharFill { get; set; } = '#';
         /// <summary>Character used for empty segments. Default is </summary>
         /// <remarks>Default is '-'.</remarks>
         public char CharEmpty { get; set; } = '-';
@@ -282,7 +282,7 @@ namespace TehGM.ConsoleProgressBar
             if (fill > _barLength)
                 fill = _barLength;
             // fill bar
-            _builder.Append(CharFll, fill);
+            _builder.Append(CharFill, fill);
             _builder.Append(CharEmpty, _barLength - fill);
 
             _builder.Append(BarClosing);
