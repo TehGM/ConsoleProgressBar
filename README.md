@@ -6,24 +6,23 @@ The bar is highly customizable using the properties in ProgressBar instance.
 Thread-safety is maintained between progress bar instances, and can be enabled application-wide by providing custom lock object.
 
 # Usage
-1. Clone or download.
-2. Build library project.
-3. Add as a dependency to your project.
-4. Add `using TehGM.ConsoleProgressBar;` and create a new `ProgressBar` instance.
+1. Clone and build ***or*** [download DLL](https://github.com/TehGM/ConsoleProgressBar/releases).
+2. Add as a dependency to your project.
+3. Add `using TehGM.ConsoleProgressBar;` and create a new `ProgressBar` instance.
 ```csharp
 ProgressBar myBar = new ProgressBar();
 ```
-5. ***(optional)*** Set custom settings for the bar.
+4. ***(optional)*** Set custom settings for the bar.
 ```csharp
 myBar.BarLength = 35;
 myBar.CharFill = '+';
 myBar.PercentageFormat = "0.00%";
 ```
-6. Call `Start` to write the bar to the terminal at current line.
+5. Call `Start` to write the bar to the terminal at current line.
 ```csharp
 myBar.Start();
 ```
-7. Update the bar whenever progress changes.
+6. Update the bar whenever progress changes.
 ```csharp
 // 10% of progress is now done
 myBar.Update(0.1);
