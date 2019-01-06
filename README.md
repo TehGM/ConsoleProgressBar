@@ -8,7 +8,7 @@ Thread-safety is maintained between progress bar instances, and can be enabled a
 # Usage
 1. Clone or download.
 2. Build library project.
-3. As a dependency to your project.
+3. Add as a dependency to your project.
 4. Add `using TehGM.ConsoleProgressBar;` and create a new `ProgressBar` instance.
 ```csharp
 ProgressBar myBar = new ProgressBar();
