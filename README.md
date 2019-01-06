@@ -43,3 +43,8 @@ ProgressBar.SetDefaultLockObject(myLockObject);
 ProgressBar myBar1 = new ProgressBar();
 ProgressBar myBar2 = new ProgressBar();
 ```
+
+# License
+Copyright (c) 2019 TehGM
+
+Licensed under [MIT License](https://github.com/TehGM/ConsoleProgressBar/blob/master/LICENSE).
