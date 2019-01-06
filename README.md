@@ -10,34 +10,34 @@ Thread-safety is maintained between progress bar instances, and can be enabled a
 2. Build library project.
 3. As a dependency to your project.
 4. Add `using TehGM.ConsoleProgressBar;` and create a new `ProgressBar` instance.
-```
+```csharp
 ProgressBar myBar = new ProgressBar();
 ```
 5. ***(optional)*** Set custom settings for the bar.
-```
+```csharp
 myBar.BarLength = 35;
 myBar.CharFill = '+';
 myBar.PercentageFormat = "0.00%";
 ```
 6. Call `Start` to write the bar to the terminal at current line.
-```
+```csharp
 myBar.Start();
 ```
 7. Update the bar whenever progress changes.
-```
+```csharp
 // 10% of progress is now done
 myBar.Update(0.1);
 ```
 # Thread-safety
 The ProgressBar instances by default use shared lock object, so if bars are updated from multiple threads, console text will not get all messy. In some situations, it may be required to write other data to terminal from multiple threads. To keep the console clean, bars can be provided custom objects to use as lock. This can be done by either:
 - Provide lock object to each bar instance.
-```
+```csharp
 object myLockObject = new object();
 myBar1.LockObject = myLockObject;
 myBar2.LockObject = myLockObject;
 ```
-- Set default lock object. *Note that this will only affect bars that haven't been yet created*.
-```
+- Set default lock object. *Note that this will only affect bar instances that haven't been yet created using a constructor*.
+```csharp
 object myLockObject = new object();
 ProgressBar.SetDefaultLockObject(myLockObject);
 ProgressBar myBar1 = new ProgressBar();
