@@ -27,6 +27,11 @@ myBar.Start();
 // 10% of progress is now done
 myBar.Update(0.1);
 ```
+7. ***(optional)*** Replace bar with text when done.
+```csharp
+// replace bar with text!
+myBar.Write("Done!");
+```
 # Thread-safety
 The ProgressBar instances by default use shared lock object, so if bars are updated from multiple threads, console text will not get all messy. In some situations, it may be required to write other data to terminal from multiple threads. To keep the console clean, bars can be provided custom objects to use as lock. This can be done by either:
 - Provide lock object to each bar instance.
