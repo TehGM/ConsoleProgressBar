@@ -1,4 +1,6 @@
 # ConsoleProgressBar
+[![Nuget](https://img.shields.io/nuget/v/TehGM.ConsoleProgressBar?style=flat)](https://www.nuget.org/packages/TehGM.ConsoleProgressBar/) [![GitHub](https://img.shields.io/github/license/TehGM/ConsoleProgressBar)](https://github.com/TehGM/ConsoleProgressBar/blob/master/LICENSE)
+
 A flexible and ready to use library for a progress bar for terminal applications.
 
 The ProgressBar class keeps track of the terminal line the progress bar occupies, and rewrites only that single line when a change is made. This allows for multiple progress bars working at once, writing to console in lines after the bar, and keeps the performance high.
@@ -6,28 +8,27 @@ The bar is highly customizable using the properties in ProgressBar instance.
 Thread-safety is maintained between progress bar instances, and can be enabled application-wide by providing custom lock object.
 
 # Usage
-1. Clone and build ***or*** [download DLL](https://github.com/TehGM/ConsoleProgressBar/releases).
-2. Add as a dependency to your project.
-3. Add `using TehGM.ConsoleProgressBar;` and create a new `ProgressBar` instance.
+1. Add as a dependency to your project.
+2. Add `using TehGM.ConsoleProgressBar;` and create a new `ProgressBar` instance.
 ```csharp
 ProgressBar myBar = new ProgressBar();
 ```
-4. ***(optional)*** Set custom settings for the bar.
+3. ***(optional)*** Set custom settings for the bar.
 ```csharp
 myBar.BarLength = 35;
 myBar.CharFill = '+';
 myBar.PercentageFormat = "0.00%";
 ```
-5. Call `Start` to write the bar to the terminal at current line.
+4. Call `Start` to write the bar to the terminal at current line.
 ```csharp
 myBar.Start();
 ```
-6. Update the bar whenever progress changes.
+5. Update the bar whenever progress changes.
 ```csharp
 // 10% of progress is now done
 myBar.Update(0.1);
 ```
-7. ***(optional)*** Replace bar with text when done.
+6. ***(optional)*** Replace bar with text when done.
 ```csharp
 // replace bar with text!
 myBar.Write("Done!");
@@ -49,6 +50,7 @@ ProgressBar myBar2 = new ProgressBar();
 ```
 
 # License
-Copyright (c) 2019 TehGM
+Copyright (c) 2019 TehGM 
 
 Licensed under [MIT License](https://github.com/TehGM/ConsoleProgressBar/blob/master/LICENSE).
+
