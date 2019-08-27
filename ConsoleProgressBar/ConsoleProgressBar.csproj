@@ -11,7 +11,12 @@
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Version>1.0.1</Version>
+    <PackageId>TehGM.ConsoleProgressBar</PackageId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="README.md~RF6a8b64.TMP" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE">
