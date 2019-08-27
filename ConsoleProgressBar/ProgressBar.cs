@@ -253,48 +253,54 @@ namespace TehGM.ConsoleProgressBar
         public void Write(string textFormat, params string[] args)
         {
             Text = textFormat != null ? string.Format(textFormat, args) : null;
-            _builder.Remove(0, _builder.Length);
-            if (Text != null)
-                _builder.Append(Text);
-            FinalizeWrite();
+            lock (_builder)
+            {
+                _builder.Remove(0, _builder.Length);
+                if (Text != null)
+                    _builder.Append(Text);
+                FinalizeWrite();
+            }
         }
 
         /// <summary>Updates progress bar.</summary>
         /// <param name="progress">Value of progress completion. 0 is 0%, 1 is 100%.</param>
         public void Update(double progress)
         {
-            // clear stringbuilder
-            _builder.Remove(0, _builder.Length);
-
-            if (Text != null)
+            lock (_builder)
             {
-                _builder.Append(Text);
-                // if text is no longer than text space, fill remaining space with blanks
-                int diff = _textSpace - _builder.Length;
-                if (diff > 0)
-                    _builder.Append(_spaceChar, diff);
+                // clear stringbuilder
+                _builder.Remove(0, _builder.Length);
+
+                if (Text != null)
+                {
+                    _builder.Append(Text);
+                    // if text is no longer than text space, fill remaining space with blanks
+                    int diff = _textSpace - _builder.Length;
+                    if (diff > 0)
+                        _builder.Append(_spaceChar, diff);
+                }
+
+
+                _builder.Append(BarOpening);
+                // calculate amount of fill
+                int fill = (int)(progress * _barLength);
+                if (fill > _barLength)
+                    fill = _barLength;
+                // fill bar
+                _builder.Append(CharFill, fill);
+                _builder.Append(CharEmpty, _barLength - fill);
+
+                _builder.Append(BarClosing);
+
+                // add percentage
+                if (ShowPercentage)
+                {
+                    _builder.Append(_spaceChar); ;
+                    _builder.Append(progress.ToString(PercentageFormat));
+                }
+
+                FinalizeWrite();
             }
-
-
-            _builder.Append(BarOpening);
-            // calculate amount of fill
-            int fill = (int)(progress * _barLength);
-            if (fill > _barLength)
-                fill = _barLength;
-            // fill bar
-            _builder.Append(CharFill, fill);
-            _builder.Append(CharEmpty, _barLength - fill);
-
-            _builder.Append(BarClosing);
-
-            // add percentage
-            if (ShowPercentage)
-            {
-                _builder.Append(_spaceChar); ;
-                _builder.Append(progress.ToString(PercentageFormat));
-            }
-
-            FinalizeWrite();
         }
 
         private void FinalizeWrite()
